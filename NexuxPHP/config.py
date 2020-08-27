@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-from NexuxPHP.dailyAttendance import COOKIE
-
 
 URL = 'https://www.hddolby.com'
 
