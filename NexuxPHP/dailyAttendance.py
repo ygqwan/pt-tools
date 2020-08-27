@@ -22,4 +22,6 @@ with session.get(URL) as res:
     otherStyleTime = time.strftime(r"%Y-%m-%d,%H:%M:%S", timeArray)
     print(otherStyleTime, tip)
 
-print(os.environ["COOKIE"])
+
+COO = os.environ["COOKIE"]
+print(COO)
