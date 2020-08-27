@@ -7,9 +7,10 @@ import requests
 import re
 import time
 
+# 获取cookie
 COOKIE_STR = os.environ["COOKIE"]
 COOKIE = eval(COOKIE_STR)
-
+# 设置请求头 cookie
 session = requests.session()
 session.headers.update(HEADER)
 session.cookies.update(COOKIE)
