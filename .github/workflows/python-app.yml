@@ -34,6 +34,6 @@ jobs:
       run: |
         pipenv shell
         
-    - name: pipenv shell
+    - name: python run
       run: |
         python .\NexuxPHP\dailyAttendance.py 
