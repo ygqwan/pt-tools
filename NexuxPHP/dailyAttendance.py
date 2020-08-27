@@ -2,10 +2,13 @@
 # -*- coding: UTF-8 -*-
 
 import os
-from config import COOKIE, HEADER, URL
+from config import HEADER, URL
 import requests
 import re
 import time
+
+COOKIE_STR = os.environ["COOKIE"]
+COOKIE = eval(COOKIE_STR)
 
 session = requests.session()
 session.headers.update(HEADER)
@@ -21,7 +24,3 @@ with session.get(URL) as res:
     timeArray = time.localtime()
     otherStyleTime = time.strftime(r"%Y-%m-%d,%H:%M:%S", timeArray)
     print(otherStyleTime, tip)
-
-
-COO = os.environ["COOKIE"]
-print(eval(COO))
