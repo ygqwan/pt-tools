@@ -1,12 +1,17 @@
 from config import SESSION, URL
 from function import now
 import re
-
+import configparser
 
 # 完整url
 thanksUrl = URL + '/thanks.php'
 
-i = 17700
+
+config = configparser.RawConfigParser()
+config.read('./NexuxPHP/config.ini')
+
+
+i = int(config['c1']['thanks_id'])
 invalid_time = 0
 
 for id in range(i, i+100):
@@ -24,6 +29,9 @@ for id in range(i, i+100):
 
                 if invalid_time > 2:
                     print(now(), '种子连续不存在，任务终止')
+                    config['c1']['thanks_id'] = '%s' % (id - 3)
+                    with open('./NexuxPHP/config.ini', 'w') as configfile:
+                         config.write(configfile)
                     break
 
         print(now(), 'id:', id, tips)

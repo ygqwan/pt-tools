@@ -3,7 +3,7 @@
 
 import os
 import requests
-
+import configparser
 
 Host = 'www.hddolby.com'
 
@@ -21,18 +21,14 @@ COOKIE = {}
 try:
     # COOKIE JSON 格式放入 github 仓库 Secrets中
     COOKIE_STR = os.environ["COOKIE"]
-    COOKIE = eval(COOKIE_STR)
+    
 except:
     # COOKIE DICT 格式在此填写 ，此处会明文暴露 ，不建议在此填写
-    COOKIE = {
-        '__cfduid': 'd7910ed696e066626a66764184d04fe7b1598230158',
-        'c_secure_uid': 'MjEwMTA%3D',
-        'c_secure_pass': 'a7b591404cda1eb1ce113e26230988db',
-        'c_secure_ssl': 'eWVhaA%3D%3D',
-        'c_secure_tracker_ssl': 'bm9wZQ%3D%3D',
-        'c_secure_login': 'bm9wZQ % 3D % 3D'
-    }
+    config = configparser.RawConfigParser()
+    config.read('./NexuxPHP/config.ini')
+    COOKIE_STR = config['c1']['cookie']
 
+COOKIE = eval(COOKIE_STR)
 
 # 设置请求头 、 cookie
 SESSION = requests.session()
