@@ -24,4 +24,4 @@ with session.get(URL) as res:
 
 
 COO = os.environ["COOKIE"]
-print(COO)
+print(eval(COO))
