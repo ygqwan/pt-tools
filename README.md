@@ -10,6 +10,7 @@ NuxusPHP 程序的PT站点
 0. Fork仓库
 1. 添加COOKIE ， Settings > Secrets > New secret > COOKIE
 2. 修改NuxusPHP/config.py 修改URL='你的要玩的站地址'
+3. 修改NuxusPHP/config.ini 修改thanks_id = 1
 
 ## COOKIE 这么设置
 
