@@ -21,3 +21,4 @@ NuxusPHP 程序的PT站点
 ![微信截图_20200828152942.png](https://i.loli.net/2020/08/28/FkhS9TzgOCHlPYG.png)
 
 ![微信截图_20200828152957.png](https://i.loli.net/2020/08/28/gRt29zNAspMSeHm.png)
+
