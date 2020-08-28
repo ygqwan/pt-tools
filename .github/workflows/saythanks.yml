@@ -33,7 +33,7 @@ jobs:
 
       - name: pipenv shell
         run: |
-          pipenv run python ./NexuxPHP/sayThanks.py
+          pipenv run python ./NexusPHP/sayThanks.py
         env:
           COOKIE: ${{ secrets.COOKIE }}
 
@@ -41,7 +41,7 @@ jobs:
         run: |
           git config --global user.email wdjoys@hotmail.com
           git config --global user.name xiaocao
-          git add ./NexuxPHP/config.ini
+          git add ./NexusPHP/config.ini
           git commit -m "update config.ini" -a
 
       - name: Push changes

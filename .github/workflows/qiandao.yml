@@ -33,6 +33,6 @@ jobs:
 
       - name: pipenv shell
         run: |
-          pipenv run python ./NexuxPHP/dailyAttendance.py
+          pipenv run python ./NexusPHP/dailyAttendance.py
         env:
           COOKIE: ${{ secrets.COOKIE }}
