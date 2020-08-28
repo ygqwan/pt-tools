@@ -23,7 +23,7 @@ try:
 except:
     # COOKIE DICT 格式在此填写 ，此处会明文暴露 ，不建议在此填写
     config = configparser.RawConfigParser()
-    config.read('./NexuxPHP/config.ini')
+    config.read('./NexusPHP/config.ini')
     COOKIE_STR = config['c1']['cookie']
 
 COOKIE = eval(COOKIE_STR)

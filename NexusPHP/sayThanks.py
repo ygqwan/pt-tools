@@ -11,7 +11,7 @@ thanksUrl = URL + '/thanks.php'
 
 
 config = configparser.RawConfigParser()
-config.read('./NexuxPHP/config.ini')
+config.read('./NexusPHP/config.ini')
 
 i = int(config['c1']['thanks_id'])
 invalid_time = 0
