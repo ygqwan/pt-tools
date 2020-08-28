@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: qiandao
+name: sayThanks
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
   pull_request:
     branches: [master]
   schedule:
-    - cron: 0 3 * * *
-    # 国家时间 3点 北京时间11点触发
+    - cron: 0 * * * *
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,6 +33,18 @@ jobs:
 
       - name: pipenv shell
         run: |
-          pipenv run python ./NexuxPHP/dailyAttendance.py
+          pipenv run python ./NexusPHP/sayThanks.py
         env:
           COOKIE: ${{ secrets.COOKIE }}
+
+      - name: commit
+        run: |
+          git config --global user.email wdjoys@hotmail.com
+          git config --global user.name xiaocao
+          git add ./NexusPHP/config.ini
+          git commit -m "update config.ini" -a
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
