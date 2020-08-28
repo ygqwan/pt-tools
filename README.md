@@ -15,3 +15,9 @@ NuxusPHP 程序的PT站点
 ## COOKIE 这么设置
 把对应站点的COOKIE改成对应格式
 [![dIhlTK.png](https://s1.ax1x.com/2020/08/28/dIhlTK.png)](https://imgchr.com/i/dIhlTK)
+
+## 然后看Action任务执行情况就行了
+
+![微信截图_20200828152942.png](https://i.loli.net/2020/08/28/FkhS9TzgOCHlPYG.png)
+
+![微信截图_20200828152957.png](https://i.loli.net/2020/08/28/gRt29zNAspMSeHm.png)
