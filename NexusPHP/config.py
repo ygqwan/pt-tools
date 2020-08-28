@@ -5,31 +5,48 @@ import os
 import requests
 import configparser
 
-HOST = 'www.hddolby.com'
-URL = 'https://' + HOST
+from NexusPHP.utility.function import cookieParse
 
 
-HEADER = {
-    'Host': HOST,
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0',
-    'Accept-Language': 'zh-CN',
-    'Referer': URL + '/details.php?id=17793&hit=1',
-}
+def generateHeader(url):
 
-# 获取cookie , 环境变量取不到就到配置文件取
-try:
-    # COOKIE JSON 格式放入 github 仓库 Secrets中
-    COOKIE_STR = os.environ["COOKIE"]
-except:
-    # COOKIE DICT 格式在此填写 ，此处会明文暴露 ，不建议在此填写
-    config = configparser.RawConfigParser()
-    config.read('./NexusPHP/config.ini')
-    COOKIE_STR = config['c1']['cookie']
+    header = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0',
+        'Accept-Language': 'zh-CN',
+        'Referer': url
+    }
+    return header
 
-COOKIE = eval(COOKIE_STR)
+def generateConfig():
+
+    # 获取cookie , 环境变量取不到就到配置文件取
+    try:
+        # COOKIE JSON 格式放入 github 仓库 Secrets中
+        config_str = os.environ["CONFIG"]
+    except:
+        # COOKIE DICT 格式在此填写 ，此处会明文暴露 ，不建议在此填写
+        config_obj = configparser.RawConfigParser()
+        config_obj.read('config.ini')
+        config_str = config_obj['NexusPHP']['config']
+
+    configs = eval(config_str)
+
+    for config in configs:
+        config['cookie'] = cookieParse(config['cookie'])
+
+        header = generateHeader(config['url'])
+
+        # 设置请求头 、 cookie
+        session = requests.session()
+        session.headers.update(header)
+        session.cookies.update(config['cookie'])
+
+        yield {'url':config['url'],'session':session,'tasks':config['tasks']}
 
 
-# 设置请求头 、 cookie
-SESSION = requests.session()
-SESSION.headers.update(HEADER)
-SESSION.cookies.update(COOKIE)
+if __name__ == '__main__':
+
+    [ print(config) for config in generateConfig() ]
+
+
+
