@@ -18,7 +18,6 @@ def generateHeader(url):
     return header
 
 def generateConfig():
-
     # 获取cookie , 环境变量取不到就到配置文件取
     try:
         # COOKIE JSON 格式放入 github 仓库 Secrets中

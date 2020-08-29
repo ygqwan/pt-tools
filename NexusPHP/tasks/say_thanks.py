@@ -23,31 +23,36 @@ def sayThanks(session,url):
     try:
         i = int(config.get('thanks_id', thanks_id))
     except:
-        i =1
+        i =300
 
     invalid_time = 0
     print(now(), '网站：%s  开始对种子说感谢' % (url),i)
-    for id in range(i, i+500):
-        time.sleep(0.2)
-        with session.post(thanksUrl, data={'id': id}) as res:
+    try:
+        for id in range(i, i+500):
+            time.sleep(0.3)
+            with session.post(thanksUrl, data={'id': id}) as res:
 
-            if not res.text:
-                invalid_time = 0
-                tips = '感谢成功，魔力 +1'
-            else:
-                r = re.compile(r'<tr><td class="text">(.+?)</td></tr>')
-                tips = r.search(res.text).group(1)
-                if tips == 'Invalid torrent id!':
-                    invalid_time += 1
-                    if invalid_time > 20:
-                        print(now(), '种子连续不存在，任务终止')
-                        id = id - 20
-                        break
-                else:
+                if not res.status_code == 200:
+                    break
+
+                if not res.text:
                     invalid_time = 0
+                    tips = '感谢成功，魔力 +1'
+                else:
+                    r = re.compile(r'<tr><td class="text">(.+?)</td></tr>')
+                    tips = r.search(res.text).group(1)
+                    if tips == 'Invalid torrent id!':
+                        invalid_time += 1
+                        if invalid_time > 20:
+                            print(now(), '种子连续不存在，任务终止')
+                            id = id - 20
+                            break
+                    else:
+                        invalid_time = 0
 
-            print(now(), '种子id:', id, tips)
-
+                print(now(), '种子id:', id, tips)
+    except:
+        print(now(),'发生了点意外~')
     # 种子id 保存到配置文件
     config['thanks_id'][thanks_id] = '%s' % (id)
     with open('config.ini', 'w') as configfile:
