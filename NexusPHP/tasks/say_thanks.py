@@ -4,6 +4,7 @@
 
 import re
 import configparser
+import time
 
 # 完整url
 from NexusPHP.config import generateConfig
@@ -27,7 +28,7 @@ def sayThanks(session,url):
     invalid_time = 0
     print(now(), '网站：%s  开始对种子说感谢' % (url),i)
     for id in range(i, i+500):
-
+        time.sleep(0.2)
         with session.post(thanksUrl, data={'id': id}) as res:
 
             if not res.text:
