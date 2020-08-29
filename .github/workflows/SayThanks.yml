@@ -9,7 +9,7 @@ on:
   pull_request:
     branches: [dev]
   schedule:
-    - cron: 0/20 * * * *
+    - cron: 0/10 * * * *
 
 jobs:
   build:
@@ -42,7 +42,7 @@ jobs:
           git config --global user.email wdjoys@hotmail.com
           git config --global user.name xiaocao
           git add config.ini
-          git commit -m "update config.ini"
+          git commit -m "auto update config.ini"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
