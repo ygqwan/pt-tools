@@ -37,15 +37,9 @@ jobs:
         env:
           CONFIG: ${{ secrets.CONFIG }}
 
-      - name: commit
-        run: |
-          git config --global user.email wdjoys@hotmail.com
-          git config --global user.name xiaocao
-          git add config.ini
-          git commit -m "auto update config.ini"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v4.4.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: "master"
+          add: 'config.ini'
