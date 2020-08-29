@@ -42,9 +42,9 @@ jobs:
           git config --global user.email wdjoys@hotmail.com
           git config --global user.name xiaocao
           git add config.ini
-          git commit -m "update config.ini" -a
+          git commit -m "update config.ini"
 
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@dev
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
