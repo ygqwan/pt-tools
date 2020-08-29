@@ -38,9 +38,9 @@ def sayThanks(session,url):
                 tips = r.search(res.text).group(1)
                 if tips == 'Invalid torrent id!':
                     invalid_time += 1
-                    if invalid_time > 2:
+                    if invalid_time > 5:
                         print(now(), '种子连续不存在，任务终止')
-                        id =id - 2
+                        id =id - 5
                         break
                 else:
                     invalid_time = 0
