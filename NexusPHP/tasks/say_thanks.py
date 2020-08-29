@@ -28,7 +28,7 @@ def sayThanks(session,url):
     invalid_time = 0
     print(now(), '网站：%s  开始对种子说感谢' % (url),i)
 
-    for id in range(i, i+500):
+    for id in range(i, i + 110):
         time.sleep(0.2)
         try:
             with session.post(thanksUrl, data={'id': id}) as res:
