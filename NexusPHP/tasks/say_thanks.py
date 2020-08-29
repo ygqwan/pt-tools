@@ -54,6 +54,8 @@ def sayThanks(session,url):
                 print(now(), '种子id:', id, tips)
         except:
             print(now(), '发生了点意外~')
+    else:
+        print(now(),'本轮结束~')
     # 种子id 保存到配置文件
     config['thanks_id'][thanks_id] = '%s' % (id)
     with open('config.ini', 'w') as configfile:
