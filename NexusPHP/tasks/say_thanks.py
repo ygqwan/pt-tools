@@ -23,13 +23,14 @@ def sayThanks(session,url):
     try:
         i = int(config.get('thanks_id', thanks_id))
     except:
-        i =300
+        i = 1
 
     invalid_time = 0
     print(now(), '网站：%s  开始对种子说感谢' % (url),i)
-    try:
-        for id in range(i, i+500):
-            time.sleep(0.3)
+
+    for id in range(i, i+500):
+        time.sleep(0.2)
+        try:
             with session.post(thanksUrl, data={'id': id}) as res:
 
                 if not res.status_code == 200:
@@ -51,8 +52,8 @@ def sayThanks(session,url):
                         invalid_time = 0
 
                 print(now(), '种子id:', id, tips)
-    except:
-        print(now(),'发生了点意外~')
+        except:
+            print(now(), '发生了点意外~')
     # 种子id 保存到配置文件
     config['thanks_id'][thanks_id] = '%s' % (id)
     with open('config.ini', 'w') as configfile:
