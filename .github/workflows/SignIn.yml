@@ -5,9 +5,9 @@ name: qiandao
 
 on:
   push:
-    branches: [dev]
+    branches: [master]
   pull_request:
-    branches: [dev]
+    branches: [master]
   schedule:
     - cron: 0 3 * * *
     # 国家时间 3点 北京时间11点触发

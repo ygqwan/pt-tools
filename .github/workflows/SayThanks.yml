@@ -5,9 +5,9 @@ name: sayThanks
 
 on:
   push:
-    branches: [dev]
+    branches: [master]
   pull_request:
-    branches: [dev]
+    branches: [master]
   schedule:
     - cron: 0/10 * * * *
 
@@ -48,4 +48,4 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: "dev"
+          branch: "master"
