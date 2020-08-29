@@ -35,7 +35,7 @@ jobs:
         run: |
           pipenv run python run.py nexusphp saythanks
         env:
-          COOKIE: ${{ secrets.COOKIE }}
+          COOKIE: ${{ secrets.CONFIG }}
 
       - name: commit
         run: |
