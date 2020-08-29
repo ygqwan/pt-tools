@@ -35,4 +35,4 @@ jobs:
         run: |
           pipenv run python run.py nexusphp signin
         env:
-          COOKIE: ${{ secrets.COOKIE }}
+          COOKIE: ${{ secrets.CONFIG }}
