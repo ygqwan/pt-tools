@@ -26,7 +26,7 @@ def sayThanks(session,url):
 
     invalid_time = 0
     print(now(), '网站：%s  开始对种子说感谢' % (url),i)
-    for id in range(i, i+100):
+    for id in range(i, i+500):
 
         with session.post(thanksUrl, data={'id': id}) as res:
 
@@ -42,6 +42,8 @@ def sayThanks(session,url):
                         print(now(), '种子连续不存在，任务终止')
                         id =id - 2
                         break
+                else:
+                    invalid_time = 0
 
             print(now(), '种子id:', id, tips)
 
